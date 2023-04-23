@@ -6,10 +6,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    return render_template('index.html', lyrics="could it be true")
     return render_template('index.html')
 
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['POST',])
 def get_lyrics():
     # get the input values from the HTML form
     artist = request.form['artist']
