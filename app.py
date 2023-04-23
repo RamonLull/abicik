@@ -9,28 +9,6 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/inquiry', methods=['POST', 'GET'])
-def check_artist_name():
-    if request.form['submit_button'] == 'Evet':
-        # create an empty list to store the lyrics
-        lyrics_list = []
-
-        # loop through each song by the artist
-        for song in search_result.songs:
-            # check if the lyrics contain the specific word
-            if word in song.lyrics:
-                # add the lyrics to the list
-                lyrics_list.append(song.lyrics)
-
-        # join the lyrics in the list into a single string separated by two newlines
-        lyrics = '\n\n'.join(lyrics_list)
-
-        # render the lyrics in the HTML template
-        return render_template('index.html', lyrics=lyrics)
-    else:
-        return "lol"
-
-
 @app.route('/', methods=['POST'])
 def get_lyrics():
     # get the input values from the HTML form
@@ -47,6 +25,7 @@ def get_lyrics():
     artist = genius.search_artist(artist_name=artist, max_songs=1, artist_id=candidate.artist.id)
     # create an empty list to store the lyrics
     lyrics_list = []
+    return render_template('index.html', lyrics="could it be true")
 
     # loop through each song by the artist
     for song in artist.songs:
