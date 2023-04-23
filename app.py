@@ -16,7 +16,7 @@ def get_lyrics():
     album = request.form['album']
     word = request.form['word']
     access_token = "vBzal6SKsuLALoUsRkUZDqXxwD7ooJtUi4RgMcfoAOImsYlGA_emercol_H_F__N"
-
+    return render_template('index.html', lyrics="could it be true")
     # authenticate with the Genius API using the access token
     genius = lyricsgenius.Genius(access_token)
 
@@ -25,7 +25,7 @@ def get_lyrics():
     artist = genius.search_artist(artist_name=artist, max_songs=1, artist_id=candidate.artist.id)
     # create an empty list to store the lyrics
     lyrics_list = []
-    return render_template('index.html', lyrics="could it be true")
+    
 
     # loop through each song by the artist
     for song in artist.songs:
